@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var speed: float = 600.0
 @export var jump_velocity: float = -700.0
 @export var can_control: bool = true  # false=开始界面不响应输入，true=正常游戏
-
 @onready var anim: AnimatedSprite2D = $Cat
 @onready var ColR: CollisionPolygon2D = $CollisionR
 @onready var ColL: CollisionPolygon2D = $CollisionL
@@ -23,6 +22,7 @@ func _physics_process(delta: float) -> void:
 
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_velocity
+		
 	else:
 		velocity.x = 0.0
 
