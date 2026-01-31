@@ -24,7 +24,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_velocity
 	else:
-		# ✅ 开始界面：锁住左右，但不要锁住竖直速度
 		velocity.x = 0.0
 
 	# 3) 移动
@@ -57,7 +56,6 @@ func _physics_process(delta: float) -> void:
 			
 			
 	else:
-		else:
 		if anim.sprite_frames and anim.sprite_frames.has_animation("Idle"):
 			anim.play("Idle")
 		else:

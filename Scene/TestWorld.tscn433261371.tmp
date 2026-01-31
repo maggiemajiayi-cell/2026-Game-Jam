@@ -24,6 +24,6 @@ texture = ExtResource("2_aqboh")
 texture_filter = 1
 position = Vector2(93, 13)
 
-[node name="Player" parent="." unique_id=1331628657 groups=["player"] instance=ExtResource("2_7b7to")]
+[node name="Player" parent="." unique_id=1331628657 instance=ExtResource("2_7b7to")]
 position = Vector2(136, -1332)
 can_control = false
