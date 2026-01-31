@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dywiwrknv2hmx" path="res://Script/cat_run_player/cat_run.gd" id="1_1ob4a"]
 [ext_resource type="Texture2D" uid="uid://cg5clh7418y88" path="res://Resources/Cats/IMG_0741 copy.PNG" id="2_mipm8"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4hbg"]
+size = Vector2(154, 46.62502)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0rr86"]
 atlas = ExtResource("2_mipm8")
 region = Rect2(210, 80, 320, 300)
@@ -52,21 +55,22 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=1331628657]
-position = Vector2(-8.61, -1.585)
 rotation = -6.2831855
 script = ExtResource("1_1ob4a")
+speed = null
+jump_velocity = null
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1985003902]
-position = Vector2(-59.39, -1.4150105)
+[node name="Rig" type="Node2D" parent="." unique_id=810691304]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rig" unique_id=407105403]
+position = Vector2(8.160676e-06, 69.31251)
+rotation = 3.1415923
+shape = SubResource("RectangleShape2D_v4hbg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rig" unique_id=1985003902]
+position = Vector2(36, -4.5474735e-13)
 sprite_frames = SubResource("SpriteFrames_bxcq7")
 animation = &"Move"
-flip_h = true
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=562962582]
-position = Vector2(-35.61, 59.585)
-rotation = 3.1415925
-polygon = PackedVector2Array(-101.219986, 2.9999733, 73.78001, 2.0000305, 75.78002, -36.99997, 33.78003, -50.999985, -11.219978, -31, -57.21997, -56.000015, -88.21998, -39.000023)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=301827689]
-position = Vector2(-1.0000004, 1.9999999)
 position_smoothing_enabled = true

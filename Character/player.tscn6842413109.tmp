@@ -51,22 +51,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4hbg"]
+size = Vector2(154, 95.25002)
+
 [node name="Player" type="CharacterBody2D" unique_id=1331628657]
-position = Vector2(-8.61, -1.585)
 rotation = -6.2831855
 script = ExtResource("1_1ob4a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1985003902]
-position = Vector2(-59.39, -1.4150105)
+position = Vector2(36, 6.2944396e-06)
 sprite_frames = SubResource("SpriteFrames_bxcq7")
 animation = &"Move"
-flip_h = true
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=562962582]
-position = Vector2(-35.61, 59.585)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=407105403]
+position = Vector2(-7.6293945e-06, 45.000008)
 rotation = 3.1415925
-polygon = PackedVector2Array(-101.219986, 2.9999733, 73.78001, 2.0000305, 75.78002, -36.99997, 33.78003, -50.999985, -11.219978, -31, -57.21997, -56.000015, -88.21998, -39.000023)
+shape = SubResource("RectangleShape2D_v4hbg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=301827689]
-position = Vector2(-1.0000004, 1.9999999)
 position_smoothing_enabled = true
