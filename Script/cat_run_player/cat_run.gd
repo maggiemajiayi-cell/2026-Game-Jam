@@ -22,8 +22,10 @@ func _physics_process(delta: float) -> void:
 	
 	if dir != 0:
 		anim.play("Move")
-		var base_scale_x := 1.0 # 或者在 _ready() 里记录 scale.x 的绝对值
-		scale.x = abs(base_scale_x) * ( -1 if dir < 0 else 1 )
+		if dir < 0:
+			anim.flip_h = false
+		else:
+			anim.flip_h = true
 	else:
 		anim.stop()
 	#elif dir < 0:

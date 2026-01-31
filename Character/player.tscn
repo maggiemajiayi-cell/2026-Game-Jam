@@ -59,13 +59,12 @@ rotation = -6.2831855
 script = ExtResource("1_1ob4a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1985003902]
-position = Vector2(-36, -16)
+position = Vector2(36, 6.2944396e-06)
 sprite_frames = SubResource("SpriteFrames_bxcq7")
 animation = &"Move"
-offset = Vector2(70, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=407105403]
-position = Vector2(-1.9999999, 34.62499)
+position = Vector2(-30.000006, 33.999996)
 rotation = 3.1415925
 shape = SubResource("RectangleShape2D_v4hbg")
 
