@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://crigjnca6h7vi"]
+
+[ext_resource type="Texture2D" uid="uid://so0kw03clqba" path="res://Resources/BackGround/Wander-OvO-1-31-2026.png" id="1_bntqo"]
+[ext_resource type="Script" uid="uid://0il7yqvk74pn" path="res://Starting/starting.gd" id="1_fv1vx"]
+[ext_resource type="Texture2D" uid="uid://csl7p4ep4uwka" path="res://Resources/Platform/50ea41f3-b643-4f3c-ab53-e483d7f7d3c4 copy.png" id="2_acr24"]
+[ext_resource type="Texture2D" uid="uid://dq4uvyl28grn6" path="res://Resources/Platform/Untitled_Artwork 2.jpg" id="2_ctbwc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acr24"]
+size = Vector2(675, 150)
+
+[node name="Starting" type="StaticBody2D" unique_id=1224948056]
+script = ExtResource("1_fv1vx")
+start_platform_path = NodePath("StartPlatform")
+
+[node name="UntitledArtwork2" type="Sprite2D" parent="." unique_id=1856014592]
+visible = false
+texture_filter = 1
+position = Vector2(36.999996, -1361)
+scale = Vector2(1.3221209, 1.1710749)
+texture = ExtResource("2_ctbwc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=890120326]
+
+[node name="WanderOvO1312026" type="Sprite2D" parent="." unique_id=481780647]
+position = Vector2(54, -1466.0001)
+scale = Vector2(1.1884766, 2.4977767)
+texture = ExtResource("1_bntqo")
+
+[node name="StartPlatform" type="StaticBody2D" parent="." unique_id=315034171]
+
+[node name="50Ea41f3B6434f3cAb53E483d7f7d3c4Copy" type="Sprite2D" parent="StartPlatform" unique_id=395035037]
+texture_filter = 1
+position = Vector2(37, -1197.0001)
+scale = Vector2(1.7719299, 1.5)
+texture = ExtResource("2_acr24")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartPlatform" unique_id=133566495]
+position = Vector2(39.5, -1179)
+shape = SubResource("RectangleShape2D_acr24")
