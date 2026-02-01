@@ -1,6 +1,14 @@
 extends CharacterBody2D
 
-@export var speed: float = 600.0
+@export var startSpeed: float = 400.0
+@export var speedLimit: float = 2200
+@export var groundAcc: float = 1200
+@export var groundDacc: float = 1.5
+@export var airresist: float = 100.0
+@export var startAcc: float = 1000
+
+
+var prevMoving: bool = false
 @export var jump_velocity: float = -700.0
 @export var can_control: bool = true  # false=开始界面不响应输入，true=正常游戏
 @onready var anim0: AnimatedSprite2D = $CatO
@@ -9,10 +17,13 @@ extends CharacterBody2D
 @onready var ColL: CollisionPolygon2D = $CollisionL
 @onready var Block0: TileMapLayer = get_parent().get_node("Blocks")
 @onready var Block1: TileMapLayer = get_parent().get_node("Ghost Blocks")
+@export var debug_velocity: Vector2
 
 var dir:float = 0.0
+var lstdir: float = 0.0
 var status:int = 0
 var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
+
 
 func respawn() ->void:
 	self.position.x= 100
@@ -40,14 +51,40 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta: float) -> void:
-	
+	debug_velocity = velocity
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
 	
 	if can_control:
 		dir = Input.get_axis("move_left", "move_right")
-		velocity.x = dir * speed
+		if dir != 0:
+			lstdir = dir
+			#prevMoving = true
+		#else:
+			#prevMoving = false
+		if is_on_floor():
+			
+			if dir != 0:
+				if velocity.x*lstdir > 500:
+					velocity.x -= groundDacc * velocity.x * delta
+				if velocity.x * dir < 0:
+					velocity.x += dir * startAcc * delta * 1.3
+				elif velocity.x * dir < startSpeed:
+					velocity.x += dir * startAcc * delta
+				else:
+					velocity.x += dir * groundAcc * delta
+			else:
+				if abs(velocity.x) < 10:
+					velocity.x = 0
+				if velocity.x*lstdir > 100:
+					velocity.x -= groundDacc * velocity.x * delta
+				elif abs(velocity.x) < 100:
+					velocity.x -= sign(velocity.x)*startAcc*delta
+				
+				
+		else:
+			if velocity.x*lstdir > 0:
+				velocity.x -= airresist * delta * lstdir
 
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_velocity
