@@ -17,7 +17,9 @@ var prevMoving: bool = false
 @onready var ColL: CollisionPolygon2D = $CollisionL
 @onready var Block0: TileMapLayer = get_parent().get_node("Blocks")
 @onready var Block1: TileMapLayer = get_parent().get_node("Ghost Blocks")
-@export var debug_velocity: Vector2
+@onready var Background1: Sprite2D = get_parent().get_node("Day")
+@onready var Background2: Sprite2D = get_parent().get_node("Night")
+
 
 var dir:float = 0.0
 var lstdir: float = 0.0
@@ -112,6 +114,8 @@ func _physics_process(delta: float) -> void:
 	if status == 0:
 		anim0.visible = true
 		anim1.visible = false
+		Background1.visible = true
+		Background2.visible = false
 		if dir != 0:
 			anim0.play("MoveO")
 			if dir < 0:
@@ -126,6 +130,8 @@ func _physics_process(delta: float) -> void:
 	if status == 1:
 		anim1.visible = true
 		anim0.visible = false
+		Background1.visible = false
+		Background2.visible = true
 		if dir != 0:
 			anim1.play("MoveN")
 			if dir < 0:
@@ -151,3 +157,15 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		respawn()
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		self.position.x = 4829
+		self.position.y = -1901
+	
+	
+	
+	
+	
+	
