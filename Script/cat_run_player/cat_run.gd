@@ -7,9 +7,17 @@ extends CharacterBody2D
 @onready var anim1: AnimatedSprite2D = $CatN
 @onready var ColR: CollisionPolygon2D = $CollisionR
 @onready var ColL: CollisionPolygon2D = $CollisionL
+@onready var Block0: TileMapLayer = get_parent().get_node("Blocks")
+@onready var Block1: TileMapLayer = get_parent().get_node("Ghost Blocks")
+
 var dir:float = 0.0
 var status:int = 0
 var gravity: float = float(ProjectSettings.get_setting("physics/2d/default_gravity"))
+
+func respawn() ->void:
+	self.position.x= 100
+	self.position.y =-700
+
 
 func turn(direction: int) -> void:
 	if direction > 0:
@@ -53,7 +61,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 
 	move_and_slide()
-
+	
 	if not can_control:
 		
 		if anim0.sprite_frames and anim0.sprite_frames.has_animation("Idle"):
@@ -61,7 +69,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			anim0.stop()
 		return
-
+	
+	
+	#Status Control: Character
 	if status == 0:
 		anim0.visible = true
 		anim1.visible = false
@@ -90,3 +100,17 @@ func _physics_process(delta: float) -> void:
 				anim1.play("Idle")
 			else:
 				anim1.stop()
+	
+	#Status Control: Scene
+	if status == 0:
+		collision_mask = 0b00000000000000000000000000000001
+		Block1.modulate.a = 0.2
+		Block0.modulate.a = 1
+	else:
+		collision_mask = 0b00000000000000000000000000000010
+		Block0.modulate.a = 0.2
+		Block1.modulate.a = 1
+		
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		respawn()
