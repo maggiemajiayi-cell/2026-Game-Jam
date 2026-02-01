@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dywiwrknv2hmx" path="res://Script/cat_run_player/cat_run.gd" id="1_1ob4a"]
 [ext_resource type="Texture2D" uid="uid://cg5clh7418y88" path="res://Resources/Cats/IMG_0741 copy.PNG" id="2_mipm8"]
+[ext_resource type="Texture2D" uid="uid://baltr6jr4rxtd" path="res://Resources/Cats/IMG_0742 copy.PNG" id="3_2brrg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0rr86"]
 atlas = ExtResource("2_mipm8")
@@ -42,36 +43,80 @@ animations = [{
 "texture": SubResource("AtlasTexture_2atcv")
 }],
 "loop": true,
-"name": &"Move",
+"name": &"MoveO",
 "speed": 9.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn4pq"]
+atlas = ExtResource("3_2brrg")
+region = Rect2(210, 60, 320, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raa3c"]
+atlas = ExtResource("3_2brrg")
+region = Rect2(555, 60, 320, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp31j"]
+atlas = ExtResource("3_2brrg")
+region = Rect2(900, 60, 320, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyipv"]
+atlas = ExtResource("3_2brrg")
+region = Rect2(1245, 60, 320, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76vsb"]
+atlas = ExtResource("3_2brrg")
+region = Rect2(1590, 60, 320, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crn8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn4pq")
 }, {
-"frames": [],
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raa3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp31j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyipv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76vsb")
+}],
 "loop": true,
-"name": &"new_animation",
-"speed": 5.0
+"name": &"MoveN",
+"speed": 9.0
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=1331628657]
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_1ob4a")
 
-[node name="Cat" type="AnimatedSprite2D" parent="." unique_id=1985003902]
+[node name="CatO" type="AnimatedSprite2D" parent="." unique_id=1985003902]
 position = Vector2(-73, 0)
 sprite_frames = SubResource("SpriteFrames_bxcq7")
-animation = &"Move"
-flip_h = true
+animation = &"MoveO"
+autoplay = "MoveO"
+
+[node name="CatN" type="AnimatedSprite2D" parent="." unique_id=809147034]
+visible = false
+position = Vector2(-72.85715, -18.571428)
+scale = Vector2(0.99999994, 0.99999994)
+sprite_frames = SubResource("SpriteFrames_crn8y")
+animation = &"MoveN"
 
 [node name="CollisionR" type="CollisionPolygon2D" parent="." unique_id=562962582]
 position = Vector2(-44.28571, 54.28571)
 rotation = 3.1415925
 polygon = PackedVector2Array(65.00001, -49.99999, 54.142864, -52.571415, 43.000008, -56.99999, 34.000008, -57.999996, 21.000008, -38.999996, -22.999992, -36.000004, -47.99999, -59.000004, -63.999992, -56.00001, -95.714264, -52.857162, -102.857124, -37.142876, -99.999985, -22.857162, -95.71428, -4.285736, -75, 31.99999, -112.00001, 59.999985, -113.000015, 105.999985, -93.00002, 160.99998, -65.00003, 176.99998, -52.00002, 140, -10.000019, 133, 25.999977, 164, 44.999985, 97.00001, 30.999992, 54.000008, 61, 25.000011, 80, -6.9999886, 76.00001, -42.99999)
 
+[node name="CollisionL" type="CollisionPolygon2D" parent="." unique_id=869149861]
+position = Vector2(-25.999996, 53.999996)
+scale = Vector2(0.99999994, -0.99999994)
+polygon = PackedVector2Array(65.00001, -49.99999, 54.571426, -54.57142, 43.000008, -56.99999, 34.000008, -57.999996, 21.000008, -38.999996, -22.999992, -36.000004, -49.71428, -61.714287, -66.85714, -60.285713, -82.57142, -51.714287, -92.57142, -47.428574, -102.571434, -30.285713, -105.428566, -8.857151, -75, 31.99999, -112.00001, 59.999985, -113.000015, 105.999985, -93.00002, 160.99998, -65.00003, 176.99998, -52.00002, 140, -10.000019, 133, 25.999977, 164, 44.999985, 97.00001, 30.999992, 54.000008, 61, 25.000011, 83.14285, -20.285706, 73.14285, -40.285698)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=301827689]
 position = Vector2(-1.0000004, 1.9999999)
 position_smoothing_enabled = true
-
-[node name="CollisionL" type="CollisionPolygon2D" parent="." unique_id=869149861]
-position = Vector2(-26, 54)
-rotation = 3.1415927
-scale = Vector2(-1, 1)
-polygon = PackedVector2Array(65.00001, -49.99999, 54.571426, -54.57142, 43.000008, -56.99999, 34.000008, -57.999996, 21.000008, -38.999996, -22.999992, -36.000004, -49.71428, -61.714287, -66.85714, -60.285713, -82.57142, -51.714287, -92.57142, -47.428574, -102.571434, -30.285713, -105.428566, -8.857151, -75, 31.99999, -112.00001, 59.999985, -113.000015, 105.999985, -93.00002, 160.99998, -65.00003, 176.99998, -52.00002, 140, -10.000019, 133, 25.999977, 164, 44.999985, 97.00001, 30.999992, 54.000008, 61, 25.000011, 83.14285, -20.285706, 73.14285, -40.285698)

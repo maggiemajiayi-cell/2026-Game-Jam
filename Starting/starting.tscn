@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://0il7yqvk74pn" path="res://Starting/starting.gd" id="1_fv1vx"]
 [ext_resource type="Texture2D" uid="uid://csl7p4ep4uwka" path="res://Resources/Platform/50ea41f3-b643-4f3c-ab53-e483d7f7d3c4 copy.png" id="2_acr24"]
 [ext_resource type="Texture2D" uid="uid://dq4uvyl28grn6" path="res://Resources/Platform/Untitled_Artwork 2.jpg" id="2_ctbwc"]
+[ext_resource type="Texture2D" uid="uid://bb5pklfoihg56" path="res://Resources/Platform/Press-Up-to-start-1-31-2026.png" id="5_yad08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acr24"]
 size = Vector2(675, 150)
@@ -37,3 +38,8 @@ texture = ExtResource("2_acr24")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StartPlatform" unique_id=133566495]
 position = Vector2(39.5, -1179)
 shape = SubResource("RectangleShape2D_acr24")
+
+[node name="PressUpToStart1312026" type="Sprite2D" parent="." unique_id=1868263356]
+position = Vector2(3, -1519)
+scale = Vector2(0.3984375, 0.2948718)
+texture = ExtResource("5_yad08")
